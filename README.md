@@ -60,26 +60,6 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-### Environment Variables
-
-1. Create the .env file in the root level (at the same level of `src` folder and `package.json` file)
-2. Add the following .env variables in the file and put the value folling by `:` example `PORT:1337`:
-
-- `MONGO_DB_CONTAINER_CONNECTION_STRING`
-- `MONGO_DB_USER`
-- `MONGO_DB_PASSWORD`
-- `MONGO_DB_DATABASE`
-- `POSTGRES_HOST`
-- `POSTGRES_PORT`
-- `POSTGRES_USERNAME`
-- `POSTGRES_PASSWORD`
-- `POSTGRES_DATABASE`
-- `PORT`
-- `API_URL`
-- `JWT_SECRET`
-- `SENDGRID_API_KEY`
-- `SENDGRID_EMAIL_FROM`
-
 ### Databases
 
 This project use two different database: Postgresql which is the principal database and MongoDB (future implementation).
@@ -108,9 +88,10 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Cristian J. Turcios](https://www.facebook.com/cristian.turcios2/)
+- Twitter - [Cristian J. Turcios](https://twitter.com/Cris_Turcios)
+- Email - cturcioscolindres01@gmail.com
+
 
 ## License
 
