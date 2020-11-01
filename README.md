@@ -53,7 +53,7 @@ In order to run this project you need to create a database and pass some configu
 ### Environment Variables
 
 1. Create the .env file in the root level (at the same level of `src` folder and `package.json` file)
-2. Add the following .env variables in the file and put the value folling by `:` example `PORT:1337`:
+2. Add the following .env variables in the file and put the value folling by `=` example `PORT=1337`:
 
 - `MONGO_DB_CONTAINER_CONNECTION_STRING`
 - `MONGO_DB_USER`

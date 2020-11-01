@@ -32,8 +32,8 @@ export class BasicAuthController {
     return this.basicAuthService.register(registerDto);
   }
 
-    @UsePipes(new AuthValidationPipe(loginSchema))
     @UseGuards(LocalAuthGuard)
+    @UsePipes(new AuthValidationPipe(loginSchema))
     @Post('login')
     @HttpCode(HttpStatus.OK)
     async login(@Ip() ipAddress, @Request() req, @Res() res: Response) {

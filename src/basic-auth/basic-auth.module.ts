@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EmailModule } from '../email/email.module';
 import User from './entity/user.entity';
 import Role from './entity/role.entity';
-import { jwtConstants } from './constants';
 import { LocalStrategy } from './passport/local.strategy';
 import { BasicAuthService } from './basic-auth.service';
 import RefreshToken from './entity/refreshToken.entity';
@@ -17,9 +17,14 @@ import { JwtStrategy } from './passport/jwt.strategy';
     EmailModule,
     TypeOrmModule.forFeature([User, Role, RefreshToken]),
     PassportModule,
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '60s' },
+    ConfigModule,
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get('JWT_SECRET'),
+        signOptions: { expiresIn: '2h' },
+      }),
+      inject: [ConfigService],
     }),
   ],
   controllers: [

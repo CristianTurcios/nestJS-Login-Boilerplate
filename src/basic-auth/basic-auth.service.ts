@@ -9,15 +9,11 @@ import Role from './entity/role.entity';
 import { RegisterDto } from './dto/RegisterAuth.dto';
 import RefreshToken from './entity/refreshToken.entity';
 import { Login, Success } from './interfaces/auth.interface';
-import { jwtConstants } from './constants';
-
 import {
   hashPassword,
-  generateJwtToken,
   randomTokenString,
   generateRefreshToken,
 } from '../shared/helpers';
-
 import { EmailService } from '../email/email.service';
 
 @Injectable()
@@ -69,7 +65,7 @@ export class BasicAuthService {
       await this.refreshTokenRepository.save(refreshToken);
       return { token: this.jwtService.sign(payload), refreshToken: refreshToken.token };
     } catch (err) {
-      console.error('/authentication/login || error', err);
+      console.error('/authentication/login ||', err);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }
@@ -106,7 +102,7 @@ export class BasicAuthService {
       await this.emailService.sendVerificationEmail(user);
       return { success: 'Registration successful, please check your email for verification instructions' };
     } catch (err) {
-      console.error('/authentication/register || error', err);
+      console.error('/authentication/register ||', err);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }
@@ -124,7 +120,7 @@ export class BasicAuthService {
       await this.usersRepository.save(user);
       return;
     } catch (err) {
-      console.error('/authentication/verify-email || error', err);
+      console.error('/authentication/verify-email ||', err);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }
@@ -146,8 +142,17 @@ export class BasicAuthService {
     try {
       await this.refreshTokenRepository.save(refreshToken);
       await this.refreshTokenRepository.save(newRefreshToken);
-      const jwtToken = generateJwtToken(user, jwtConstants.secret);
-      return { token: jwtToken, refreshToken: newRefreshToken.token };
+      const payload = {
+        user: {
+          id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          role: user.role.role,
+        },
+        sub: user.id,
+      };
+      return { token: this.jwtService.sign(payload), refreshToken: newRefreshToken.token };
     } catch (err) {
       console.error('/authentication/refresh-token', err);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
@@ -167,7 +172,7 @@ export class BasicAuthService {
       await this.emailService.sendPasswordResetEmail(user);
       return { success: 'Please check your email for password reset instructions' };
     } catch (err) {
-      console.error('/authentication/forgot-password || error', err);
+      console.error('/authentication/forgot-password ||', err);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }
@@ -191,7 +196,7 @@ export class BasicAuthService {
       await this.usersRepository.save(user);
       return;
     } catch (err) {
-      console.error('/authentication/change-passwor || error', err);
+      console.error('/authentication/change-passwor ||', err);
       throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
     }
   }

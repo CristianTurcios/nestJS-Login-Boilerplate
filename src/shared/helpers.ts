@@ -1,18 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
-import * as jwt from 'jsonwebtoken';
 import User from '../basic-auth/entity/user.entity';
 import RefreshToken from '../basic-auth/entity/refreshToken.entity';
-
-export const generateJwtToken = (user: User, jwtSecret: string) => jwt.sign({
-  user: {
-    id: user.id,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    role: user.role.role,
-  },
-}, jwtSecret, { expiresIn: '8h' });
 
 export const randomTokenString = () => crypto.randomBytes(40).toString('hex');
 
