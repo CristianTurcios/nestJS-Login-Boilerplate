@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IsNotEmpty } from 'class-validator';
 import {
-    Entity, Column, PrimaryGeneratedColumn, JoinColumn,
-    ManyToOne, CreateDateColumn,
+  Entity, Column, PrimaryGeneratedColumn, JoinColumn,
+  ManyToOne, CreateDateColumn,
 } from 'typeorm';
 import User from './user.entity';
 

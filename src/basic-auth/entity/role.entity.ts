@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import {
-    Entity, PrimaryGeneratedColumn, Column,
+  Entity, PrimaryGeneratedColumn, Column,
 } from 'typeorm';
 
 @Entity()

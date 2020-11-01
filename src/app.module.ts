@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService  } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BasicAuthModule } from './basic-auth/basic-auth.module';
 import { AppController } from './app.controller';
 import { EmailModule } from './email/email.module';
@@ -33,7 +33,7 @@ import { EmailModule } from './email/email.module';
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DATABASE'),
         entities: [
-          'dist/**/*.entity{.ts,.js}'
+          'dist/**/*.entity{.ts,.js}',
         ],
         migrationsTableName: 'migration',
         migrations: ['src/migration/*.ts'],
@@ -42,13 +42,13 @@ import { EmailModule } from './email/email.module';
         },
         synchronize: true,
         logging: false,
-      })
+      }),
     }),
     BasicAuthModule,
-    EmailModule
+    EmailModule,
   ],
   controllers: [
-    AppController
+    AppController,
   ],
   providers: [],
 })
