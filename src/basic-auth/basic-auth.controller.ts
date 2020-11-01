@@ -3,7 +3,9 @@ import {
   UseGuards, HttpCode, Query, HttpException, HttpStatus, Ip, Param,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { RegisterDto, ForgotPasswordDto, ChangePasswordDto } from './dto/auth.dto';
+import { RegisterDto } from './dto/RegisterAuth.dto';
+import { ForgotPasswordDto } from './dto/ForgotPassword.dto';
+import { ChangePasswordDto } from './dto/ChangePassword.dto';
 import { BasicAuthService } from './basic-auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthValidationPipe } from '../shared/pipes/basic-auth.pipe';
@@ -20,7 +22,9 @@ import { Success } from './interfaces/auth.interface';
 
 @Controller('authentication')
 export class BasicAuthController {
-  constructor(private basicAuthService: BasicAuthService) {}
+  constructor(private basicAuthService: BasicAuthService) {
+    // Constructor
+  }
 
     @UsePipes(new AuthValidationPipe(registerValidationSchema))
     @Post('register')

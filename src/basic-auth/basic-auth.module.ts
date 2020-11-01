@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
-import { EmailModule } from 'src/email/email.module';
+import { EmailModule } from '../email/email.module';
 import User from './entity/user.entity';
 import Role from './entity/role.entity';
 import { jwtConstants } from './constants';

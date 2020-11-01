@@ -7,7 +7,9 @@ import User from '../basic-auth/entity/user.entity';
 export class EmailService {
   constructor(
         private configService: ConfigService,
-  ) {}
+  ) {
+    // Constructor
+  }
 
   async sendEmail(data: any): Promise<any> {
     const apiKey = this.configService.get<string>('SENDGRID_API_KEY');
@@ -31,7 +33,7 @@ export class EmailService {
     let message;
     const origin = this.configService.get<string>('API_URL');
     if (origin) {
-      const resetUrl = `${origin}/authentication/change-password?token=${user.resetToken}`;
+      const resetUrl = `${origin}/authentication/change-password/${user.resetToken}`;
       message = `<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
                    <p><a href="${resetUrl}">${resetUrl}</a></p>`;
     }

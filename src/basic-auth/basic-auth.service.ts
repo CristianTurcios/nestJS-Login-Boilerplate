@@ -6,7 +6,7 @@ import { validate } from 'class-validator';
 import { InjectRepository } from '@nestjs/typeorm';
 import User from './entity/user.entity';
 import Role from './entity/role.entity';
-import { RegisterDto } from './dto/auth.dto';
+import { RegisterDto } from './dto/RegisterAuth.dto';
 import RefreshToken from './entity/refreshToken.entity';
 import { Login, Success } from './interfaces/auth.interface';
 import { jwtConstants } from './constants';
@@ -31,7 +31,9 @@ export class BasicAuthService {
         private refreshTokenRepository: Repository<RefreshToken>,
         private jwtService: JwtService,
         private emailService:EmailService,
-  ) {}
+  ) {
+    // Constructor
+  }
 
   async validateUser(email: string, password: string): Promise<User> {
     const user = await this.usersRepository.findOne({ email }, { relations: ['role'] });

@@ -3,7 +3,9 @@ import { PipeTransform, Injectable, BadRequestException } from '@nestjs/common';
 
 @Injectable()
 export class AuthValidationPipe implements PipeTransform {
-  constructor(private schema: ObjectSchema) {}
+  constructor(private schema: ObjectSchema) {
+    // Constructor
+  }
 
   transform(value: any) {
     const { error } = this.schema.validate(value);
