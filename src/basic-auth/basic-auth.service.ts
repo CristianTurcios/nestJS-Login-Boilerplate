@@ -13,7 +13,7 @@ import {
   hashPassword,
   randomTokenString,
   generateRefreshToken,
-} from '../shared/helpers';
+} from './helpers/helpers';
 import { EmailService } from '../email/email.service';
 
 @Injectable()

@@ -8,8 +8,8 @@ import { ForgotPasswordDto } from './dto/ForgotPassword.dto';
 import { ChangePasswordDto } from './dto/ChangePassword.dto';
 import { BasicAuthService } from './basic-auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
-import { AuthValidationPipe } from '../shared/pipes/basic-auth.pipe';
-import { setTokenCookie } from '../shared/helpers';
+import { AuthValidationPipe } from './pipes/basic-auth.pipe';
+import { setTokenCookie } from './helpers/helpers';
 import {
   loginSchema,
   verifyEmailValidation,
