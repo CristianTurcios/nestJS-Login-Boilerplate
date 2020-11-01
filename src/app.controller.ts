@@ -1,17 +1,19 @@
-import {
-  Controller, Get,
-  SetMetadata,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Roles } from './basic-auth/decorators/roles.decorator';
 import { JwtAuthGuard } from './basic-auth/guards/jwt-auth.guard';
-import { RolesGuard } from './shared/guards/roles';
+import { RolesGuard } from './basic-auth/guards/roles.guard';
 
 @Controller()
 export class AppController {
-  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
-  @SetMetadata('roles', ['admin'])
   getHello(): string {
     return 'Welcome!';
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Get('/protected')
+  @Roles('Admin')
+  getHelloProtectedRoute(): string {
+    return 'Welcome to a protected route!';
   }
 }
