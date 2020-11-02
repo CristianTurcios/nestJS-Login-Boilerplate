@@ -4,11 +4,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
-import { BasicAuthModule } from './basic-auth/basic-auth.module';
+import { BasicAuthModule } from './modules/basic-auth/basic-auth.module';
 import { AppController } from './app.controller';
-import { EmailModule } from './email/email.module';
-import { UsersModule } from './users/users.module';
-import { RolesModule } from './roles/roles.module';
+import { EmailModule } from './modules/email/email.module';
+import { UsersModule } from './modules/users/users.module';
+import { RolesModule } from './modules/roles/roles.module';
 
 @Module({
   imports: [

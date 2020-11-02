@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
-import User from '../entity/user.entity';
-import RefreshToken from '../entity/refreshToken.entity';
+import User from '../../../entity/user.entity';
+import RefreshToken from '../../../entity/refreshToken.entity';
 
 export const randomTokenString = () => crypto.randomBytes(40).toString('hex');
 

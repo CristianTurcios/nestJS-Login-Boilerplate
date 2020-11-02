@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as sgMail from '@sendgrid/mail';
-import User from '../basic-auth/entity/user.entity';
+import User from '../../entity/user.entity';
 
 @Injectable()
 export class EmailService {

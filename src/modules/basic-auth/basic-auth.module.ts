@@ -4,11 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EmailModule } from '../email/email.module';
-import User from './entity/user.entity';
-import Role from './entity/role.entity';
+import User from '../../entity/user.entity';
+import Role from '../../entity/role.entity';
 import { LocalStrategy } from './passport/local.strategy';
 import { BasicAuthService } from './basic-auth.service';
-import RefreshToken from './entity/refreshToken.entity';
+import RefreshToken from '../../entity/refreshToken.entity';
 import { BasicAuthController } from './basic-auth.controller';
 import { JwtStrategy } from './passport/jwt.strategy';
 

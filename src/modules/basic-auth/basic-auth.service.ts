@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { validate } from 'class-validator';
 import { InjectRepository } from '@nestjs/typeorm';
-import User from './entity/user.entity';
-import Role from './entity/role.entity';
+import User from '../../entity/user.entity';
+import Role from '../../entity/role.entity';
 import { RegisterDto } from './dto/RegisterAuth.dto';
-import RefreshToken from './entity/refreshToken.entity';
+import RefreshToken from '../../entity/refreshToken.entity';
 import { Login, Success } from './interfaces/auth.interface';
 import {
   hashPassword,

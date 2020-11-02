@@ -1,7 +1,7 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { Roles } from './basic-auth/decorators/roles.decorator';
-import { JwtAuthGuard } from './basic-auth/guards/jwt-auth.guard';
-import { RolesGuard } from './basic-auth/guards/roles.guard';
+import { Roles } from './modules/basic-auth/decorators/roles.decorator';
+import { JwtAuthGuard } from './modules/basic-auth/guards/jwt-auth.guard';
+import { RolesGuard } from './modules/basic-auth/guards/roles.guard';
 
 @Controller()
 export class AppController {
