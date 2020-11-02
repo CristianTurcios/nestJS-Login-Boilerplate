@@ -26,12 +26,17 @@ export interface User {
 export interface IQuery {
     User(id: string): User | Promise<User>;
     Users(): User[] | Promise<User[]>;
+    Role(id: number): Role | Promise<Role>;
+    Roles(): Role[] | Promise<Role[]>;
 }
 
 export interface IMutation {
     postUser(firstName: string, lastName: string, email: string, password: string, confirmPassword: string, acceptTerms: boolean, role: number): User | Promise<User>;
     deleteUser(id: string): User | Promise<User>;
     updateUser(id: string, email?: string, firstName?: string, lastName?: string, role?: number, acceptTerms?: boolean): User | Promise<User>;
+    postRole(role: string): Role | Promise<Role>;
+    deleteRole(id: number): Role | Promise<Role>;
+    updateRole(id: number, role: string): Role | Promise<Role>;
 }
 
 export type JSON = any;

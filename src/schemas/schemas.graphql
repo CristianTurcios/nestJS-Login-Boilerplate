@@ -1,21 +1,5 @@
-# type Author {
-#   id: Int!
-#   firstName: String
-#   lastName: String
-#   posts: [Post]
-# }
-
-# type Post {
-#   id: Int!
-#   title: String!
-#   votes: Int
-# }
-
-# type Query {
-#   author(id: Int!): Author
-# }
-
 # import { User } from "User.graphql"
+# import { Role } from "Role.graphql"
 
 scalar JSON
 scalar Date
@@ -27,8 +11,8 @@ type Query {
   Users: [User]
   # Account(id: String!): Account
   # Accounts: [Account]
-  # Role(id: String!): Role
-  # Roles: [Role]
+  Role(id: Int!): Role
+  Roles: [Role]
 }
 
 type Mutation {
@@ -40,9 +24,9 @@ type Mutation {
   # deleteAccount(id: String!): Account
   # updateAccount(id: String!, account: JSON!): Account
   # 
-  # postRole(role: String!): Role
-  # deleteRole(id: String!): Role
-  # updateRole(id: String!, role: String!): Role
+  postRole(role: String!): Role
+  deleteRole(id: Int!): Role
+  updateRole(id: Int!, role: String!): Role
   #
   # singleUpload(file: Upload!): File!
   # singleUploadStream(file: Upload!): File!

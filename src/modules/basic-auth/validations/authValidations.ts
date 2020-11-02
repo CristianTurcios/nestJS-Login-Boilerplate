@@ -15,6 +15,15 @@ export const registerValidationSchema = Joi.object({
   role: Joi.number().required(),
 });
 
+export const updateUserValidationSchema = Joi.object({
+  id: Joi.string().required(),
+  firstName: Joi.string().optional(),
+  lastName: Joi.string().optional(),
+  email: Joi.string().email().optional(),
+  acceptTerms: Joi.boolean().valid(true).optional(),
+  role: Joi.number().optional(),
+});
+
 export const verifyEmailValidation = Joi.object({
   token: Joi.string().required(),
 });
