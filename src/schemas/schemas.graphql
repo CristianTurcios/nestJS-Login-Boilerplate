@@ -1,0 +1,49 @@
+# type Author {
+#   id: Int!
+#   firstName: String
+#   lastName: String
+#   posts: [Post]
+# }
+
+# type Post {
+#   id: Int!
+#   title: String!
+#   votes: Int
+# }
+
+# type Query {
+#   author(id: Int!): Author
+# }
+
+# import { User } from "User.graphql"
+
+scalar JSON
+scalar Date
+scalar Any
+scalar Upload
+
+type Query {
+  User(id: String!): User
+  Users: [User]
+  # Account(id: String!): Account
+  # Accounts: [Account]
+  # Role(id: String!): Role
+  # Roles: [Role]
+}
+
+type Mutation {
+  postUser(firstName: String!, lastName: String!, email: String!, password: String!, confirmPassword: String!, acceptTerms: Boolean!, role: Int!): User
+  deleteUser(id: String!): User
+  updateUser(id: String!, email: String, firstName: String, lastName: String, role: Int, acceptTerms: Boolean): User
+  #
+  # postAccount(account: JSON!): Account
+  # deleteAccount(id: String!): Account
+  # updateAccount(id: String!, account: JSON!): Account
+  # 
+  # postRole(role: String!): Role
+  # deleteRole(id: String!): Role
+  # updateRole(id: String!, role: String!): Role
+  #
+  # singleUpload(file: Upload!): File!
+  # singleUploadStream(file: Upload!): File!
+}

@@ -1,0 +1,11 @@
+type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    role: JSON!
+    createdAt: Date
+    updatedAt: Date
+    acceptTerms: Boolean!
+    isVerified: Boolean!
+}

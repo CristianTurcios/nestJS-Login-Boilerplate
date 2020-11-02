@@ -2,12 +2,20 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 import { BasicAuthModule } from './basic-auth/basic-auth.module';
 import { AppController } from './app.controller';
 import { EmailModule } from './email/email.module';
+import { UsersModule } from './users/users.module';
+import { RolesModule } from './roles/roles.module';
 
 @Module({
   imports: [
+    UsersModule,
+    RolesModule,
+    EmailModule,
+    BasicAuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -44,8 +52,17 @@ import { EmailModule } from './email/email.module';
         logging: false,
       }),
     }),
-    BasicAuthModule,
-    EmailModule,
+    GraphQLModule.forRoot({
+      include: [
+        UsersModule,
+        RolesModule,
+      ],
+      typePaths: ['./**/*.graphql'],
+      definitions: {
+        path: join(process.cwd(), 'src/schemas/graphql.ts'),
+      },
+      context: ({ req }) => ({ req }),
+    }),
   ],
   controllers: [
     AppController,

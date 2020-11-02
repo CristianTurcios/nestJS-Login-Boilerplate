@@ -66,7 +66,7 @@ export class BasicAuthService {
       return { token: this.jwtService.sign(payload), refreshToken: refreshToken.token };
     } catch (err) {
       console.error('/authentication/login ||', err);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -94,7 +94,7 @@ export class BasicAuthService {
     const errors = await validate(user);
 
     if (errors.length > 0) {
-      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Bad Request', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     try {
@@ -103,7 +103,7 @@ export class BasicAuthService {
       return { success: 'Registration successful, please check your email for verification instructions' };
     } catch (err) {
       console.error('/authentication/register ||', err);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -121,7 +121,7 @@ export class BasicAuthService {
       return;
     } catch (err) {
       console.error('/authentication/verify-email ||', err);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -155,7 +155,7 @@ export class BasicAuthService {
       return { token: this.jwtService.sign(payload), refreshToken: newRefreshToken.token };
     } catch (err) {
       console.error('/authentication/refresh-token', err);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -173,7 +173,7 @@ export class BasicAuthService {
       return { success: 'Please check your email for password reset instructions' };
     } catch (err) {
       console.error('/authentication/forgot-password ||', err);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -197,7 +197,7 @@ export class BasicAuthService {
       return;
     } catch (err) {
       console.error('/authentication/change-passwor ||', err);
-      throw new HttpException('Something went wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
